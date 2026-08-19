@@ -1,15 +1,20 @@
-# Projectiles mod!
-# a mod for icey.
+# Projectiles Mod!
 
-# this mod allows you to spam projectiles in spring cleaning 23 on unity!!!
+A mod for Icey.
 
-# you need to be in a photon room for the gui to work. and uses "tab" to open and close
+This mod allows you to spam projectiles in Spring Cleaning 23 on Unity.
 
-# gui has i think almost all of the projectiles in the game!!
+You need to be in a Photon room for the GUI to work.  
+Press **TAB** to open and close the menu.
 
-# Script ∨
+The GUI has almost all of the projectiles in the game.
 
-	using System.Collections;
+---
+
+## Script ∨
+
+```csharp
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -28,70 +33,22 @@ public class projectiles : MonoBehaviour
     bool toggle3;
     bool toggle4;
     bool toggle5;
-
     bool toggle6;
-
     bool toggle7;
 
+    // Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
+    // IS THE POS OF WHERE THE PROJECTILES COME FROM
+    // SO IF U WANT IT TO COME OUT THE HEAD DO:
+    // Vector3 slingshotLaunchLocation = GorillaTagger.Instance.headCollider.transform.position;
 
-    // Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position; IS THE POS OF WHERE THE PROJECTILES COME FROM
-    // SO IF U WANT IT TO COME OUT THE HEAD DO Vector3 slingshotLaunchLocation = GorillaTagger.Instance.headCollider.transform.position;, etc anyway emjoy this i workedd on this all night !!!
-
-
-
-    void SnowBalls() {
-		Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
-        Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
-		int projHash = FindPoolHashByName("SnowballProjectile"); // gets the hash
-		int projtrail = -1; // hash no trail so its -1 
-		bool forlefthand = false;
-		int count = 30;
-		// call the rpc from gorilla game manager as it has the rpc on its photon view
-        view.RPC(
-            "LaunchSlingshotProjectile",
-			RpcTarget.All,
-            slingshotLaunchLocation,
-			slingshotLaunchVelocity,
-			projHash,
-			projtrail,
-			forlefthand,
-			count
-        );
-	
-	}
-
-	void slingshotspam()
-	{
+    void SnowBalls()
+    {
         Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
         Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
-        int projHash = FindPoolHashByName("SlingshotProjectile"); // gets the hash
-		int projtrail = FindTrailHash("SlingshotProjectileTrail"); // this grabs the hash for the trail most projectiles use this,
+        int projHash = FindPoolHashByName("SnowballProjectile");
+        int projtrail = -1;
         bool forlefthand = false;
         int count = 30;
-
-
-		view.RPC(
-			"LaunchSlingshotProjectile",
-			RpcTarget.All,
-			slingshotLaunchLocation,
-			slingshotLaunchVelocity,
-			projHash,
-			projtrail,
-			forlefthand,
-			count
-		);
-
-    }
-
-	void cloudslingshot()
-	{
-        Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
-        Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
-        int projHash = FindPoolHashByName("CloudSlingshot_Projectile"); // gets the hash
-        int projtrail = FindTrailHash("CloudSlingshot_ProjectileTrailFX"); // this grabs the hash for the trail most projectiles use this,
-        bool forlefthand = false;
-        int count = 30;
-
 
         view.RPC(
             "LaunchSlingshotProjectile",
@@ -105,15 +62,14 @@ public class projectiles : MonoBehaviour
         );
     }
 
-	void cupidarrow()
-	{
+    void slingshotspam()
+    {
         Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
         Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
-        int projHash = FindPoolHashByName("CupidArrow_Projectile"); // gets the hash
-        int projtrail = FindTrailHash("CupidArrow_ProjectileTrailFX"); // this grabs the hash for the trail most projectiles use this,
+        int projHash = FindPoolHashByName("SlingshotProjectile");
+        int projtrail = FindTrailHash("SlingshotProjectileTrail");
         bool forlefthand = false;
         int count = 30;
-
 
         view.RPC(
             "LaunchSlingshotProjectile",
@@ -127,15 +83,56 @@ public class projectiles : MonoBehaviour
         );
     }
 
-	void elfbow()
-	{
+    void cloudslingshot()
+    {
         Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
         Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
-        int projHash = FindPoolHashByName("ElfBow_Projectile"); // gets the hash
-        int projtrail = FindTrailHash("ElfBow_ProjectileTrail"); // this grabs the hash for the trail most projectiles use this,
+        int projHash = FindPoolHashByName("CloudSlingshot_Projectile");
+        int projtrail = FindTrailHash("CloudSlingshot_ProjectileTrailFX");
         bool forlefthand = false;
         int count = 30;
 
+        view.RPC(
+            "LaunchSlingshotProjectile",
+            RpcTarget.All,
+            slingshotLaunchLocation,
+            slingshotLaunchVelocity,
+            projHash,
+            projtrail,
+            forlefthand,
+            count
+        );
+    }
+
+    void cupidarrow()
+    {
+        Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
+        Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
+        int projHash = FindPoolHashByName("CupidArrow_Projectile");
+        int projtrail = FindTrailHash("CupidArrow_ProjectileTrailFX");
+        bool forlefthand = false;
+        int count = 30;
+
+        view.RPC(
+            "LaunchSlingshotProjectile",
+            RpcTarget.All,
+            slingshotLaunchLocation,
+            slingshotLaunchVelocity,
+            projHash,
+            projtrail,
+            forlefthand,
+            count
+        );
+    }
+
+    void elfbow()
+    {
+        Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
+        Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
+        int projHash = FindPoolHashByName("ElfBow_Projectile");
+        int projtrail = FindTrailHash("ElfBow_ProjectileTrail");
+        bool forlefthand = false;
+        int count = 30;
 
         view.RPC(
             "LaunchSlingshotProjectile",
@@ -153,11 +150,10 @@ public class projectiles : MonoBehaviour
     {
         Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
         Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
-        int projHash = FindPoolHashByName("HornsSlingshotProjectile_PrefabV"); // gets the hash
-        int projtrail = FindTrailHash("HornsSlingshotProjectileTrail_PrefabV"); // this grabs the hash for the trail most projectiles use this,
+        int projHash = FindPoolHashByName("HornsSlingshotProjectile_PrefabV");
+        int projtrail = FindTrailHash("HornsSlingshotProjectileTrail_PrefabV");
         bool forlefthand = false;
         int count = 30;
-
 
         view.RPC(
             "LaunchSlingshotProjectile",
@@ -175,11 +171,10 @@ public class projectiles : MonoBehaviour
     {
         Vector3 slingshotLaunchLocation = GorillaTagger.Instance.rightHandTransform.position;
         Vector3 slingshotLaunchVelocity = new Vector3(10, 10, 10);
-        int projHash = FindPoolHashByName("IceSlingshotProjectile_PrefabV Variant"); // gets the hash
-        int projtrail = FindTrailHash("IceSlingshotProjectileTrail Variant"); // this grabs the hash for the trail most projectiles use this,
+        int projHash = FindPoolHashByName("IceSlingshotProjectile_PrefabV Variant");
+        int projtrail = FindTrailHash("IceSlingshotProjectileTrail Variant");
         bool forlefthand = false;
         int count = 30;
-
 
         view.RPC(
             "LaunchSlingshotProjectile",
@@ -193,16 +188,14 @@ public class projectiles : MonoBehaviour
         );
     }
 
-    // GUI stuff now 
     bool showMenu = false;
     Rect windowRect = new Rect(50, 50, 220, 260);
 
     Color normalColor = new Color(0.15f, 0.15f, 0.15f, 1f);
     Color redColor = Color.red;
 
-    float fade = 0f; // 0 = normal, 1 = red
+    float fade = 0f;
     bool fadeUp = true;
-
 
     void Update()
     {
@@ -218,10 +211,9 @@ public class projectiles : MonoBehaviour
         if (Keyboard.current.tabKey.wasPressedThisFrame)
             showMenu = !showMenu;
 
-        // Fade shit
         if (fadeUp)
         {
-            fade += Time.deltaTime * 1.5f; // speed
+            fade += Time.deltaTime * 1.5f;
             if (fade >= 1f)
             {
                 fade = 1f;
@@ -244,7 +236,6 @@ public class projectiles : MonoBehaviour
         if (!showMenu) return;
 
         GUI.backgroundColor = Color.Lerp(normalColor, redColor, fade);
-
         windowRect = GUI.Window(0, windowRect, DrawMenu, "Projectiles test thing idk");
     }
 
@@ -269,35 +260,34 @@ public class projectiles : MonoBehaviour
         GUI.DragWindow(new Rect(0, 0, 10000, 20));
     }
 
-
-
-
-
     private int FindPoolHashByName(string prefabName)
-	{
-		foreach (KeyValuePair<int, SinglePool> keyValuePair in (ObjectPools.instance.GetType().GetField("lookUp", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(ObjectPools.instance) as Dictionary<int, SinglePool>))
-		{
-			if (keyValuePair.Value.objectToPool.name == prefabName)
-			{
-				return keyValuePair.Key;
-			}
-		}
-		Debug.LogError("Pool with prefab name '" + prefabName + "' not found.");
-		return -1;
-	}
+    {
+        foreach (KeyValuePair<int, SinglePool> keyValuePair in
+            (ObjectPools.instance.GetType().GetField("lookUp", BindingFlags.Instance | BindingFlags.NonPublic)
+            .GetValue(ObjectPools.instance) as Dictionary<int, SinglePool>))
+        {
+            if (keyValuePair.Value.objectToPool.name == prefabName)
+                return keyValuePair.Key;
+        }
+
+        Debug.LogError("Pool with prefab name '" + prefabName + "' not found.");
+        return -1;
+    }
 
     private int FindTrailHash(string projectileName)
-	{
-		foreach (KeyValuePair<int, SinglePool> keyValuePair in (ObjectPools.instance.GetType().GetField("lookUp", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(ObjectPools.instance) as Dictionary<int, SinglePool>))
-		{
-			string name = keyValuePair.Value.objectToPool.name;
-			if (name.Contains(projectileName) && name.Contains("Trail"))
-			{
-				return keyValuePair.Key;
-			}
-		}
-		Debug.LogError("Trail for '" + projectileName + "' not found.");
-		return -1;
-	}
+    {
+        foreach (KeyValuePair<int, SinglePool> keyValuePair in
+            (ObjectPools.instance.GetType().GetField("lookUp", BindingFlags.Instance | BindingFlags.NonPublic)
+            .GetValue(ObjectPools.instance) as Dictionary<int, SinglePool>))
+        {
+            string name = keyValuePair.Value.objectToPool.name;
 
+            if (name.Contains(projectileName) && name.Contains("Trail"))
+                return keyValuePair.Key;
+        }
+
+        Debug.LogError("Trail for '" + projectileName + "' not found.");
+        return -1;
+    }
 }
+```
