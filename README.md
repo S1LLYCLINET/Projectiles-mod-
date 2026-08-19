@@ -204,13 +204,13 @@ public class projectiles : MonoBehaviour
             if (PhotonNetwork.InRoom && GorillaGameManager.instance != null)
             {
                 view = GorillaGameManager.instance.photonView;
-                Debug.Log("Projectile script: PhotonView assigned!");
             }
         }
 
         if (Keyboard.current.tabKey.wasPressedThisFrame)
             showMenu = !showMenu;
 
+        // fade shit
         if (fadeUp)
         {
             fade += Time.deltaTime * 1.5f;
