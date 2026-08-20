@@ -1,7 +1,5 @@
 # Projectiles Mod!
 
-A mod for Icey.
-
 This mod allows you to spam projectiles in Spring Cleaning 23 on Unity.
 
 You need to be in a Photon room for the GUI to work.  
@@ -24,7 +22,6 @@ using UnityEngine.InputSystem;
 
 public class projectiles : MonoBehaviour
 {
-    // script made by s1lly./ this script is for icey!
     // this script finds projectile hashes based of the prefab name, in the spring cleaning 23 update on gorilla tag
 
     PhotonView view;
